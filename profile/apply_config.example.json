@@ -1,0 +1,99 @@
+{
+  "_doc": "Copy this file to profile/apply_config.json. These are the answers the auto-applier injects into every application form (Greenhouse, Lever, Ashby, etc.) and email cover letter. Replace every <TODO>. The script refuses to submit any application that still has unresolved <TODO> in a required field.",
+  "_review_before_use": "Set auto_submit=false the first 1-2 runs. The pipeline will fill forms and screenshot them but NOT click submit. Verify a few preview.png files look right, then flip auto_submit=true.",
+
+  "auto_submit": false,
+  "max_applies_per_run": 5,
+  "max_email_applies_per_run": 5,
+  "delay_seconds_between_applies": 30,
+  "require_per_jd_tailoring_for_email": true,
+  "_per_jd_doc": "When true, scripts/send-email.mjs refuses to send any job that lacks tailored_per_jd:true AND a per-job resume_tailored.pdf. Quality > volume.",
+
+  "full_name": "<TODO: Your Full Name>",
+  "first_name": "<TODO: First>",
+  "last_name": "<TODO: Last>",
+  "email": "<TODO: you@gmail.com>",
+  "phone": "<TODO: +country-number>",
+  "phone_country_code": "<TODO: +1 / +91 / etc.>",
+  "phone_national": "<TODO: phone without country code>",
+
+  "linkedin": "<TODO: https://linkedin.com/in/your-handle>",
+  "github": "<TODO: https://github.com/your-handle>",
+  "portfolio": "<TODO: https://your-portfolio.com>",
+  "other_links": {
+    "_doc": "Optional. Add any project / library / writing URL you want surfaced in cover letters."
+  },
+
+  "current_employer": "<TODO: Acme Corp (or 'Unemployed')>",
+  "current_title": "<TODO: Software Engineer>",
+  "currently_employed": true,
+  "ok_to_contact_current_employer": false,
+
+  "experience_years": 0,
+  "experience_years_by_stack": {
+    "_doc": "Optional but useful — some forms ask 'years of React' specifically. Add the stacks you'd answer for honestly."
+  },
+
+  "notice_period": "<TODO: e.g. '2 weeks' or '30 days' or 'Immediate'>",
+  "notice_period_days": 0,
+  "start_date": "<TODO: 'Immediate' or a date>",
+  "earliest_start_date_iso": "<TODO: YYYY-MM-DD>",
+
+  "current_ctc_inr_lpa": 0,
+  "expected_ctc_inr_lpa_min": 0,
+  "expected_ctc_inr_lpa_max": 0,
+  "expected_ctc_usd_min": 0,
+  "expected_ctc_usd_max": 0,
+  "salary_negotiable": true,
+
+  "location_city": "<TODO>",
+  "location_state": "<TODO>",
+  "location_country": "<TODO>",
+  "location_country_code": "<TODO: ISO 2-letter, e.g. IN, US>",
+  "willing_to_relocate": true,
+  "open_to_remote": true,
+
+  "work_authorization": {
+    "_doc": "List every country you might apply in. 'Yes — citizen' / 'Yes — permanent resident' / 'No — would need visa sponsorship' / 'No — would need work permit'.",
+    "<TODO: Country>": "<TODO: Yes — citizen / No — would need sponsorship>"
+  },
+  "needs_sponsorship_intl": true,
+
+  "demographics_us_eeo": {
+    "_note": "Used only on US EEO/equal-opportunity forms. All optional — feel free to set every field to 'Prefer not to disclose'.",
+    "gender": "<TODO: Male / Female / Non-binary / Prefer not to disclose>",
+    "race_or_ethnicity": "<TODO: Asian / Black or African American / Hispanic or Latino / White / Two or more / Prefer not to disclose>",
+    "hispanic_or_latino": "<TODO: Yes / No / Prefer not to disclose>",
+    "veteran_status": "<TODO: I am a protected veteran / I am not a protected veteran / Prefer not to disclose>",
+    "disability_status": "<TODO: Yes / No / Prefer not to disclose>"
+  },
+  "demographics_default_when_optional": "Prefer not to disclose",
+
+  "nationality": "<TODO: e.g. Indian, American>",
+
+  "default_open_text_answers": {
+    "why_this_company": "<TODO: 1-2 sentence default. The pipeline will replace this with a company-specific answer when it has the JD context — this is just the fallback.>",
+    "why_you_are_a_fit": "<TODO: 2-3 sentence elevator pitch. Reference your top 2 achievements with numbers.>",
+    "biggest_accomplishment": "<TODO: 1-2 sentences on a project you'd be proud to defend in an interview.>",
+    "why_leaving_current": "<TODO: short, positive — 'looking for X' rather than 'frustrated with Y'.>",
+    "heard_from_default": "Online job board"
+  },
+
+  "form_submission_safety": {
+    "_doc": "Hard guardrails. The script will refuse to submit if any of these conditions hit.",
+    "require_resume_pdf_present": true,
+    "require_cover_letter_present": true,
+    "skip_if_more_than_n_unknown_questions": 3,
+    "skip_if_url_contains": [
+      "workday.com",
+      "myworkdayjobs.com",
+      "taleo.net",
+      "icims.com",
+      "successfactors.com",
+      "oracle.com/hcm",
+      "linkedin.com/jobs/view"
+    ],
+    "blocked_reason_workday": "Workday forms are multi-step custom flows that break too often to auto-submit reliably.",
+    "blocked_reason_linkedin": "LinkedIn Easy Apply violates ToS and risks account ban."
+  }
+}

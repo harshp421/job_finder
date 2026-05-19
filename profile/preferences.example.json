@@ -1,0 +1,111 @@
+{
+  "_doc": "Copy this file to profile/preferences.json. The pipeline reads it to decide which jobs to surface vs. ignore, and where to look for new ones.",
+
+  "email_for_applications": "<TODO: you@gmail.com — the address the pipeline sends applications from>",
+  "email_for_outreach_from": "<TODO: same address (or different if you separate cold outreach)>",
+  "do_not_send_from": ["<TODO: any work / personal emails the pipeline must NEVER use>"],
+
+  "locations": {
+    "preferred": [
+      "Remote",
+      "<TODO: City 1>",
+      "<TODO: City 2>"
+    ],
+    "open_to_relocation": true,
+    "open_to_international_remote": true,
+    "timezone_tolerance": "any"
+  },
+
+  "salary_anchor": {
+    "india_inr_lpa_min": 0,
+    "india_inr_lpa_target": 0,
+    "international_usd_min": 0,
+    "international_usd_target": 0,
+    "_doc": "Set both currencies if you're open to remote-international. Leave one set to 0 if you only want local offers."
+  },
+
+  "company_preferences": {
+    "preferred": [
+      "<TODO: company names or types you'd love to join, e.g. 'YC startups', 'AI-native', 'developer tools'>"
+    ],
+    "avoid": [
+      "<TODO: list of consultancies / brand-name body shops / industries you refuse to apply to>"
+    ]
+  },
+
+  "fit_score_thresholds": {
+    "auto_queue": 7,
+    "candidate": 5,
+    "ignore": 4,
+    "_doc": "Each discovered job is scored 0-10 against your profile. >= auto_queue lands in jobs/queue for tailoring. Between candidate and auto_queue is borderline (surfaced but not auto-tailored). Below ignore is dropped silently."
+  },
+
+  "discovery_sources": [
+    {
+      "name": "Hacker News Who's Hiring",
+      "url": "https://hn.algolia.com/api/v1/search?query=Who%20is%20hiring&tags=story",
+      "fetcher": "curl",
+      "notes": "Algolia HN API. Use curl + python3. Search latest 'Who is hiring' thread by title, then fetch comments via /items/<id>."
+    },
+    {
+      "name": "RemoteOK",
+      "url": "https://remoteok.com/api",
+      "fetcher": "curl",
+      "notes": "JSON API, first entry is metadata. Send User-Agent header. ~100 jobs returned, most US-only."
+    },
+    {
+      "name": "Hasjob",
+      "url": "https://hasjob.co/",
+      "fetcher": "webfetch",
+      "notes": "Bangalore-heavy Indian product startup board. SSR HTML — WebFetch works. Refreshes weekly."
+    },
+    {
+      "name": "WeWorkRemotely",
+      "url": "https://weworkremotely.com/categories/remote-programming-jobs",
+      "fetcher": "webfetch",
+      "notes": "SSR HTML works with WebFetch. Strong for international remote."
+    },
+    {
+      "name": "YC Work at a Startup",
+      "url": "https://www.workatastartup.com/jobs?role_types[]=eng&us_visa_required=false&sortBy=created_desc",
+      "fetcher": "scrape-page",
+      "scrape_args": "--scroll --max-text 25000",
+      "notes": "React app — must use scripts/scrape-page.mjs. Drop the us_visa_required filter if you ARE US-authorized."
+    },
+    {
+      "name": "Wellfound (AngelList)",
+      "url": "https://wellfound.com/jobs",
+      "fetcher": "scrape-page",
+      "scrape_args": "--scroll --max-text 20000",
+      "notes": "BOT-PROTECTED via Cloudflare. Expect empty results from headless Chromium — skip with a note rather than fake data."
+    },
+    {
+      "name": "Cuvette",
+      "url": "https://cuvette.tech/app/student/jobs",
+      "fetcher": "scrape-page",
+      "scrape_args": "--scroll --max-text 15000",
+      "notes": "India-focused, may require login for full listings. Try without first."
+    },
+    {
+      "name": "Ashby boards (per-company)",
+      "url_template": "https://jobs.ashbyhq.com/{company}",
+      "fetcher": "scrape-page",
+      "scrape_args": "--scroll --max-text 25000",
+      "notes": "Targeted per-company. Examples: baseten, fathom.video, mercor, ramp. Use when a source mentions an Ashby URL."
+    },
+    {
+      "name": "Greenhouse boards (per-company)",
+      "url_template": "https://boards.greenhouse.io/{company}",
+      "fetcher": "scrape-page",
+      "scrape_args": "--max-text 25000",
+      "notes": "Mostly static but some lazy-render. Use scrape-page to be safe."
+    },
+    {
+      "name": "LinkedIn Jobs (public search)",
+      "url_template": "https://www.linkedin.com/jobs/search/?keywords={keyword}&location={location}&f_TPR=r604800",
+      "fetcher": "scrape-page",
+      "scrape_args": "--max-text 12000",
+      "notes": "Login wall blocks most details. Treat as supplementary only."
+    }
+  ]
+}

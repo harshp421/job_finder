@@ -1,0 +1,17 @@
+{
+  "name": "job_finder",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Local agentic job-search pipeline (Claude Code orchestrated, no external paid APIs).",
+  "scripts": {
+    "pdf": "node scripts/md-to-pdf.mjs",
+    "apply": "node scripts/auto-apply.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "marked": "^15.0.0",
+    "nodemailer": "^8.0.7",
+    "playwright": "^1.50.0"
+  }
+}
