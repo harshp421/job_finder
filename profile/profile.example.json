@@ -1,0 +1,83 @@
+{
+  "_doc": "Copy this file to profile/profile.json and replace every <TODO> with your real values. Anything inside profile.json is read by the pipeline whenever it tailors a resume, scores a job, or fills a form.",
+
+  "name": "<TODO: Your Full Name>",
+  "email": "<TODO: you@gmail.com>",
+  "phone": "<TODO: +country-number>",
+  "location": "<TODO: City, State, Country>",
+  "links": {
+    "github": "<TODO: https://github.com/your-handle>",
+    "linkedin": "<TODO: https://linkedin.com/in/your-handle>",
+    "portfolio": "<TODO: https://your-portfolio.com (or remove this key)>"
+  },
+
+  "experience_years": 0,
+  "current_role": "<TODO: e.g. Software Engineer at Acme (Jan 2024 – present)>",
+  "seniority": "<TODO: junior | mid-level | senior>",
+
+  "target_seniority_labels": [
+    "Software Engineer",
+    "Full Stack Engineer",
+    "Frontend Engineer",
+    "Backend Engineer",
+    "SDE",
+    "SDE 1",
+    "SDE 2",
+    "Mid-level",
+    "L3",
+    "L4"
+  ],
+  "avoid_seniority_labels": [
+    "Senior",
+    "Staff",
+    "Principal",
+    "Lead",
+    "Architect",
+    "Manager",
+    "Director",
+    "Intern"
+  ],
+
+  "skills": {
+    "primary": ["<TODO: your top 6-10 skills, the ones you can be grilled on>"],
+    "secondary": ["<TODO: skills you know but aren't your strongest>"],
+    "specialty": ["<TODO: anything specialized that sets you apart e.g. LLMs, design systems, perf>"],
+    "system_design": ["<TODO: API design, caching, queues, etc.>"],
+    "testing_devops": ["<TODO: Jest, CI/CD, Docker, etc.>"]
+  },
+
+  "achievements_headline": [
+    "<TODO: 1-line impact statement with a number (e.g. 'Cut API p99 latency 40% with Redis caching')>",
+    "<TODO: another 1-line achievement>",
+    "<TODO: 3-5 more bullets in this format>"
+  ],
+
+  "target_role_buckets": [
+    {
+      "name": "Full Stack Engineer",
+      "fit": "primary",
+      "keywords": ["full stack", "fullstack", "node", "react", "next.js", "typescript"]
+    },
+    {
+      "name": "Frontend Engineer",
+      "fit": "strong",
+      "keywords": ["frontend", "front-end", "react", "next.js", "vue", "svelte", "tailwind"]
+    },
+    {
+      "name": "Backend Engineer",
+      "fit": "good",
+      "keywords": ["backend", "back-end", "node", "api", "postgres", "redis"]
+    }
+  ],
+
+  "avoid_role_keywords": [
+    "DevOps Engineer",
+    "SRE",
+    "Data Scientist",
+    "QA",
+    "Manual Tester",
+    "Salesforce",
+    "SAP",
+    "Wordpress"
+  ]
+}

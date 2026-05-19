@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(touch:*)",
+      "Bash(sleep:*)",
+      "Bash(cat jobs/*)",
+      "Bash(cat profile/*)",
+      "Bash(cat logs/*)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(bash scripts/setup.sh)",
+      "Bash(node scripts/md-to-pdf.mjs:*)",
+      "Bash(node scripts/auto-apply.mjs:*)",
+      "Bash(node scripts/scrape-page.mjs:*)",
+      "Bash(node --version)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "WebFetch(domain:hn.algolia.com)",
+      "WebFetch(domain:news.ycombinator.com)",
+      "WebFetch(domain:workatastartup.com)",
+      "WebFetch(domain:www.workatastartup.com)",
+      "WebFetch(domain:wellfound.com)",
+      "WebFetch(domain:weworkremotely.com)",
+      "WebFetch(domain:remoteok.com)",
+      "WebFetch(domain:remoteok.io)",
+      "WebFetch(domain:hasjob.co)",
+      "WebFetch(domain:cuvette.tech)",
+      "WebFetch(domain:linkedin.com)",
+      "WebFetch(domain:www.linkedin.com)",
+      "WebSearch",
+      "Read(//private/tmp/**)",
+      "Read(//tmp/**)",
+      "mcp__claude_ai_Gmail__create_draft",
+      "mcp__claude_ai_Gmail__search_threads"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(git push:*)"
+    ],
+    "additionalDirectories": [
+      "/tmp",
+      "/private/tmp"
+    ]
+  }
+}

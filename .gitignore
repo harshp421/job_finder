@@ -1,0 +1,52 @@
+# Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Playwright artifacts (large, regenerable)
+test-results/
+playwright-report/
+
+# ───────────────────────────────────────────────────────────────────────────
+# User-private files. The repo ships *.example.{json,md} — you copy them to
+# the unsuffixed name below and fill in your real details. The real files
+# stay local, never committed.
+# ───────────────────────────────────────────────────────────────────────────
+profile/profile.json
+profile/preferences.json
+profile/apply_config.json
+profile/resume_base.md
+profile/resume_base.pdf
+
+# Per-user job data — never commit
+jobs/queue/*
+jobs/applied/*
+jobs/archived/*
+!jobs/queue/.gitkeep
+!jobs/applied/.gitkeep
+!jobs/archived/.gitkeep
+
+# Per-user logs, drafts, digests
+logs/runs/*
+!logs/runs/.gitkeep
+email/digest/*
+!email/digest/.gitkeep
+outreach/drafts/*
+outreach/sent/*
+!outreach/drafts/.gitkeep
+!outreach/sent/.gitkeep
+
+# Generated tailored PDFs (regenerable from .md, can grow large)
+jobs/**/*.pdf
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
